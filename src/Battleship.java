@@ -1,34 +1,34 @@
 import java.util.Random;
 
 public class Battleship {
-    static int nrRows=10;
-    static int shipLength=3;
-    public int shipHealth=shipLength;
-    static int nrShipsAlive=0;
-    static boolean[][] usedSpace= new boolean[nrRows][nrRows];
-    public boolean[][] shipLocation= new boolean[nrRows][nrRows];
+    static int NR_ROWS=10;
+    static int SHIP_LENGTH=3;
+    static int NR_SHIPS_ALIVE=0;
+    static boolean[][] USED_SPACE= new boolean[NR_ROWS][NR_ROWS];
+    public int shipHealth=SHIP_LENGTH;
+    public boolean[][] shipLocation= new boolean[NR_ROWS][NR_ROWS];
     //constructor
     public Battleship() {
-        nrShipsAlive++;
+        NR_SHIPS_ALIVE++;
         loop: while (true) {
             boolean oriz;
             Random r = new Random();
             oriz = r.nextBoolean();
-            int x = r.nextInt(nrRows);
-            int y = r.nextInt(nrRows);
+            int x = r.nextInt(NR_ROWS);
+            int y = r.nextInt(NR_ROWS);
             if (oriz) {
-                if (x <= (nrRows - shipLength)) {
+                if (x <= (NR_ROWS - SHIP_LENGTH)) {
                     int i;
-                    for (i = x; i < shipLength + x; i++) {
-                        if (usedSpace[y][i]) {
+                    for (i = x; i < SHIP_LENGTH + x; i++) {
+                        if (USED_SPACE[y][i]) {
                             continue loop;
                         }
                     }
                     //locatia aleasa este buna
                     //setez locatia
                     int j;
-                        for (j = x; j < shipLength + x; j++) {
-                        usedSpace[y][j]=true;
+                        for (j = x; j < SHIP_LENGTH + x; j++) {
+                        USED_SPACE[y][j]=true;
                         this.shipLocation[y][j]=true;
                         }
                         break loop;
@@ -38,18 +38,18 @@ public class Battleship {
             }
             //cod oriz = fals
             else {
-                if (y <= (nrRows - shipLength)) {
+                if (y <= (NR_ROWS - SHIP_LENGTH)) {
                     int i;
-                    for (i = y; i < shipLength + y; i++) {
-                        if (usedSpace[i][x]) {
+                    for (i = y; i < SHIP_LENGTH + y; i++) {
+                        if (USED_SPACE[i][x]) {
                             continue loop;
                         }
                     }
                     //locatia aleasa este buna
                     //setez locatia
                     int j;
-                    for (j = y; j < shipLength + y; j++) {
-                        usedSpace[j][x]=true;
+                    for (j = y; j < SHIP_LENGTH + y; j++) {
+                        USED_SPACE[j][x]=true;
                         this.shipLocation[j][x]=true;
                     }
                     break loop;
@@ -75,7 +75,7 @@ public class Battleship {
            if (shipHealth<1)
            {
                result="ship sunk";
-               nrShipsAlive--;
+               NR_SHIPS_ALIVE--;
            }
        }
        return result;

@@ -2,14 +2,12 @@ import java.util.Scanner;
 
 public class IO {
 
-    public void printMatrix(boolean matrix[][])
+    public void printMatrix(boolean[][] matrix)
     {
-        for (int i = 0; i < matrix.length; i++)
-        {
+        for (boolean[] rowOfMatrix : matrix) {
 
-            for (int j = 0; j < matrix[i].length; j++)
-            {
-                System.out.print( matrix[i][j]  + "\t");
+            for (boolean cellOfMatrix : rowOfMatrix) {
+                System.out.print(cellOfMatrix + "\t");
             }
             System.out.println();
         }
